@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(src/image/estrelas.jpg);
+    background-size: cover;
+    background-color: #0A0F1B; /* Cor de fundo mais escura */
+    font-family: 'Itim', sans-serif;
+    color: #F5F5F5; /* Mantendo o texto claro */
+    height: 100%;
+}
+
+#container {
+    margin: 5% auto;
+    width: 1000px;
+}
+
+nav {
+    margin-left: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+}
+
+.dias {
+    width: 120px;
+    height: 45px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+    color: #F5F5F5;
+    background: #223A5F; /* Azul escuro */
+    transition: background 0.3s ease;
+}
+
+.dias:active {
+    background: #1C314D; /* Azul ainda mais escuro ao clicar */
+}
+
+.tarefas {
+    width: 1000px;
+    height: 650px;
+    background: #182635; /* Fundo azul profundo */
+    border-radius: 8px 8px 0 0;
+}
+
+#botoes {
+    width: 1000px;
+    background: #223A5F; /* Azul escuro */
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    justify-content: end;
+    align-items: start;
+    padding: 10px 8px;
+    gap: 12px;
+}
+
+#volume {
+    transform: rotate(-90deg);
+    width: 60px;
+}
+
+.range {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    background: #445D76; /* Azul acinzentado */
+    border-radius: 10px;
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #FFD700; /* Dourado para destacar */
+    border-radius: 50%;
+    border: 2px solid #182635;
+    transform: translateX(0);
+}
+
+#control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    font-size: 40px;
+    color: #F5F5F5;
+    border: none;
+    background: none;
+    transition: color 0.3s ease;
+}
+
+button:hover {
+    color: #00BFFF; /* Azul claro */
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+table {
+    width: 90%;
+    margin: 50px auto;
+    font-size: 22px;
+    text-align: center;
+    color: #F5F5F5;
+}
+
+tr, td, th {
+    padding: 8px;
+    text-align: center;
+}
+
+td {
+    border-bottom: solid #1C314D 1px; /* Azul mais escuro para linhas */
+}
+
+.hidden {
+    display: none;
+}
+
+.modal {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    width: 500px;
+    height: 500px;
+    border-radius: 12px;
+    background: #223A5F; /* Fundo mais escuro para modal */
+    color: #F5F5F5;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Destaque com sombra */
+}
+
+#modalTitle {
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#entrada {
+    width: 100%;
+    height: 390px;
+    margin-top: 10px;
+    display: flex;
+    align-content: space-evenly;
+    flex-direction: column;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.componentes {
+    font-family: 'Itim', sans-serif;
+    width: 180px;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    background: #182635; /* Azul profundo */
+    color: #F5F5F5;
+    transition: background 0.3s ease;
+}
+
+.componentes:hover {
+    background: #445D76; /* Azul mais claro no hover */
+}
+
+#closed {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    justify-content: space-around;
+    align-items: start;
+}
+
+#closedModal {
+    font-size: 20px;
+}
+
+label {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: #223A5F; /* Azul escuro */
+    border: solid #F5F5F5 1px;
+    border-radius: 50%;
+}
+
+input[type="checkbox"]:checked {
+    background: #FFD700; /* Dourado ao ser selecionado */
+}
+
+#criar {
+    margin-top: 10px;
+    width: 100px;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: solid 1px;
+    background: #182635;
+    color: #F5F5F5;
+    transition: background 0.3s ease;
+}
+
+#criar:hover {
+    background: #445D76;
+    color: #FFD700; /* Dourado no hover */ }
