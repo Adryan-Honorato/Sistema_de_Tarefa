@@ -1,18 +1,22 @@
-const { app, BrowserWindow } = require('electron')
+// Importa dois módulos Electron
+//app, que controla o ciclo de vida de eventos do seu aplicativo
+// BrowserWindow, que cria e gerencia janelas de aplicativos
+const { app, BrowserWindow } = require("electron");
 
-const createWindow = () => {
+// Função que cria uma constante "win" com um novo modulo BrowserWindow definido com 800 de largura e 600 de altura
+//  e passando para a const "win" o arquivo que vai ser carregado index.html
+const CriarJanela = () => {
   const win = new BrowserWindow({
     width: 800,
-    height: 600
-  })
+    height: 600,
+  });
 
-  win.loadFile('index.html')
-}
+  win.loadFile("index.html");
+};
 
 app.whenReady().then(() => {
-  createWindow()
-})
-
+  createWindow();
+});
 // ========================
 // Music Control Section
 // ========================
@@ -168,7 +172,7 @@ startTime.addEventListener("focusout", () => {
 
 endTime.addEventListener("focusout", () => {
   if (
-    ["Recorrente", "Unitário" , "Alternado"].includes(tempTask.value) ||
+    ["Recorrente", "Unitário", "Alternado"].includes(tempTask.value) ||
     (tempTask.value === "Alternado" && startTime.value >= endDate.value)
   ) {
     endTime.value = "";
