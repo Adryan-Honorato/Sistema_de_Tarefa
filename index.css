@@ -5,22 +5,36 @@
 }
 
 body {
+    height: 100vh;
     background-image: url(src/image/estrelas.jpg);
     background-size: cover;
-    background-color: #0A0F1B; /* Cor de fundo mais escura */
+    background-color: #0A0F1B;
+    /* Cor de fundo mais escura */
     font-family: 'Itim', sans-serif;
-    color: #F5F5F5; /* Mantendo o texto claro */
-    height: 100%;
+    color: #F5F5F5;
+    /* Mantendo o texto claro */
 }
 
 #container {
-    margin: 5% auto;
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#to-do {
     width: 1000px;
+    height: 800px;
+
 }
 
 nav {
-    margin-left: 5px;
-    width: 100%;
+    margin-left: 3px;
+    width: 85%;
     display: flex;
     justify-content: start;
     gap: 5px;
@@ -35,24 +49,32 @@ nav {
     align-items: center;
     border-radius: 8px 8px 0 0;
     color: #F5F5F5;
-    background: #223A5F; /* Azul escuro */
+    background: #223A5F;
+    /* Azul escuro */
     transition: background 0.3s ease;
 }
 
 .dias:active {
-    background: #1C314D; /* Azul ainda mais escuro ao clicar */
+    background: #1C314D;
+    /* Azul ainda mais escuro ao clicar */
 }
 
 .tarefas {
-    width: 1000px;
-    height: 650px;
-    background: #182635; /* Fundo azul profundo */
+    width: 100%;
+    height: 84%;
+    background: #182635;
+    /* Fundo azul profundo */
     border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
 }
 
 #botoes {
-    width: 1000px;
-    background: #223A5F; /* Azul escuro */
+    width: 100%;
+    background: #223A5F;
+    /* Azul escuro */
     border-radius: 0 0 8px 8px;
     display: flex;
     justify-content: end;
@@ -70,7 +92,8 @@ nav {
     -webkit-appearance: none;
     appearance: none;
     height: 10px;
-    background: #445D76; /* Azul acinzentado */
+    background: #445D76;
+    /* Azul acinzentado */
     border-radius: 10px;
 }
 
@@ -78,7 +101,8 @@ nav {
     -webkit-appearance: none;
     width: 20px;
     height: 20px;
-    background: #FFD700; /* Dourado para destacar */
+    background: #FFD700;
+    /* Dourado para destacar */
     border-radius: 50%;
     border: 2px solid #182635;
     transform: translateX(0);
@@ -99,15 +123,10 @@ button {
 }
 
 button:hover {
-    color: #00BFFF; /* Azul claro */
+    color: #00BFFF;
+    /* Azul claro */
 }
 
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-}
 
 table {
     width: 90%;
@@ -117,13 +136,16 @@ table {
     color: #F5F5F5;
 }
 
-tr, td, th {
+tr,
+td,
+th {
     padding: 8px;
     text-align: center;
 }
 
 td {
-    border-bottom: solid #1C314D 1px; /* Azul mais escuro para linhas */
+    border-bottom: solid #1C314D 1px;
+    /* Azul mais escuro para linhas */
 }
 
 .hidden {
@@ -139,9 +161,11 @@ td {
     width: 500px;
     height: 500px;
     border-radius: 12px;
-    background: #223A5F; /* Fundo mais escuro para modal */
+    background: #223A5F;
+    /* Fundo mais escuro para modal */
     color: #F5F5F5;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Destaque com sombra */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    /* Destaque com sombra */
 }
 
 #modalTitle {
@@ -169,13 +193,15 @@ td {
     font-size: 14px;
     border-radius: 8px;
     border: none;
-    background: #182635; /* Azul profundo */
+    background: #182635;
+    /* Azul profundo */
     color: #F5F5F5;
     transition: background 0.3s ease;
 }
 
 .componentes:hover {
-    background: #445D76; /* Azul mais claro no hover */
+    background: #445D76;
+    /* Azul mais claro no hover */
 }
 
 #closed {
@@ -202,13 +228,15 @@ input[type="checkbox"] {
     appearance: none;
     width: 15px;
     height: 15px;
-    background-color: #223A5F; /* Azul escuro */
+    background-color: #223A5F;
+    /* Azul escuro */
     border: solid #F5F5F5 1px;
     border-radius: 50%;
 }
 
 input[type="checkbox"]:checked {
-    background: #FFD700; /* Dourado ao ser selecionado */
+    background: #FFD700;
+    /* Dourado ao ser selecionado */
 }
 
 #criar {
@@ -225,4 +253,67 @@ input[type="checkbox"]:checked {
 
 #criar:hover {
     background: #445D76;
-    color: #FFD700; /* Dourado no hover */ }
+    color: #FFD700;
+    /* Dourado no hover */
+}
+
+/* Para dispositivos móveis (até 600px) */
+
+
+/* Para tablets (601px a 1024px) */
+@media (max-width: 768px) {
+    body {
+        height: 88vh;
+    }
+
+    #to-do {
+        width: 650px;
+        height: 450px;
+
+    }
+    .dias{
+        height: 35px;
+        font-size: 11px;
+    }
+    .tarefas{
+        font-size: 20px;
+    }
+    button{
+        font-size: 35px;
+    }
+}
+
+@media(min-width: 768px) and (max-width: 1024px) {
+    body {
+        height: 94vh;
+    }
+
+    #to-do {
+        width: 700px;
+        height: 500px;
+
+    }
+    .dias{
+        height: 35px;
+        font-size: 11px;
+    }
+    .tarefas{
+        font-size: 20px;
+    }
+    button{
+        font-size: 35px;
+    }
+ 
+}
+
+/* Para tablets em paisagem (768px a 1024px) */
+@media (min-width: 1024px) and (max-width: 1800px) {
+    body {
+        height: 99vh;
+    }
+
+    #to-do {
+        width: 800px;
+        height: 600px;
+    }
+}
