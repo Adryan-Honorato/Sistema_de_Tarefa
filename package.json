@@ -2,7 +2,7 @@
   "name": "yes",
   "version": "1.0.0",
   "description": "Sistema de tarefa",
-  "main": "index.js",
+  "main": "main.js",
   "devDependencies": {
     "electron": "^34.0.0"
   },

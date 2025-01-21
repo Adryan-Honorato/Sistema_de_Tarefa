@@ -1,22 +1,18 @@
-// Importa dois módulos Electron
-//app, que controla o ciclo de vida de eventos do seu aplicativo
-// BrowserWindow, que cria e gerencia janelas de aplicativos
-const { app, BrowserWindow } = require("electron");
 
-// Função que cria uma constante "win" com um novo modulo BrowserWindow definido com 800 de largura e 600 de altura
-//  e passando para a const "win" o arquivo que vai ser carregado index.html
-const CriarJanela = () => {
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600,
-  });
 
-  win.loadFile("index.html");
-};
+// All the Node.js APIs are available in the preload process.
+// It has the same sandbox as a Chrome extension.
+window.addEventListener('DOMContentLoaded', () => {
+  const replaceText = (selector, text) => {
+    const element = document.getElementById(selector)
+    if (element) element.innerText = text
+  }
 
-app.whenReady().then(() => {
-  createWindow();
-});
+  for (const dependency of ['chrome', 'node', 'electron']) {
+    replaceText(`${dependency}-version`, process.versions[dependency])
+  }
+})
+
 // ========================
 // Music Control Section
 // ========================
