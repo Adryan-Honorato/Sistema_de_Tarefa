@@ -1,23 +1,23 @@
-
-
-// All the Node.js APIs are available in the preload process.
-// It has the same sandbox as a Chrome extension.
+// Todas as APIs do Node.js estão disponíveis no processo de preload.
+// Ele possui o mesmo sandbox que uma extensão do Chrome.
 window.addEventListener('DOMContentLoaded', () => {
+  // Função para substituir o texto de um elemento pelo seu seletor e texto fornecido.
   const replaceText = (selector, text) => {
     const element = document.getElementById(selector)
     if (element) element.innerText = text
   }
 
+  // Atualiza as versões das dependências na interface.
   for (const dependency of ['chrome', 'node', 'electron']) {
     replaceText(`${dependency}-version`, process.versions[dependency])
   }
 })
 
 // ========================
-// Music Control Section
+// Seção de Controle de Música
 // ========================
 
-// Seleção dos elementos de música
+// Seleção dos elementos de áudio
 const music = document.getElementsByTagName("audio")[0];
 const playMusic = document.getElementById("playMusic");
 const vol = document.getElementById("volume");
@@ -26,14 +26,14 @@ const icon = document.getElementsByClassName("iconPlay")[0];
 let indexMusic = 1;
 music.volume = 0.2;
 
-// Evento quando a música termina
+// Evento acionado quando a música termina
 music.addEventListener("ended", () => {
   indexMusic = indexMusic < 6 ? indexMusic + 1 : 1;
   music.src = `src/Audios/music${indexMusic}.mp3`;
   music.play();
 });
 
-// Evento de controle da música (play/pause)
+// Evento de clique para tocar/pausar música
 playMusic.addEventListener("click", () => {
   if (playMusic.value === "1") {
     music.play();
@@ -48,33 +48,33 @@ playMusic.addEventListener("click", () => {
   }
 });
 
-// Evento para ajustar o volume
+// Evento para ajustar o volume da música
 vol.addEventListener("input", () => {
   music.volume = vol.value / 10;
 });
 
 // ========================
-// Modal Section
+// Seção do Modal
 // ========================
 
 const modal = document.querySelector(".modal");
 const openModal = document.getElementById("openModal");
 const closedModal = document.getElementById("closedModal");
 
-// Abre o modal
+// Abre o modal ao clicar no botão
 openModal.addEventListener("click", () => {
   modal.style.display = "flex";
   document.querySelector("p").classList.add("hidden");
 });
 
-// Fecha o modal
+// Fecha o modal ao clicar no botão de fechar
 closedModal.addEventListener("click", () => {
   modal.style.display = "none";
   document.querySelector("p").classList.remove("hidden");
 });
 
 // ========================
-// Task Fields Selection
+// Seleção de Campos de Tarefa
 // ========================
 
 const inputName = document.querySelectorAll("label");
@@ -86,7 +86,7 @@ const components = document.querySelectorAll(".componentes");
 const createTask = document.getElementById("criar");
 
 // ========================
-// Modes Task
+// Modos de Tarefa
 // ========================
 
 const tempTask = document.getElementById("tipoTemporal");
@@ -99,7 +99,7 @@ tempTask.addEventListener("input", () => {
 });
 
 // ========================
-// Date Handling
+// Manipulação de Datas
 // ========================
 
 // Obter a data atual no formato "YYYY-MM-DD"
@@ -112,11 +112,11 @@ const endDate = document.getElementById("dataFinal");
 const weekDay = document.getElementById("semanaDia");
 const weekDays = document.querySelectorAll(".dias");
 
-// Definir o mínimo nos inputs de data
+// Define a data mínima nos campos de data
 startDate.min = todayDate;
 endDate.min = todayDate;
 
-// Evento no campo de data inicial
+// Evento ao perder o foco do campo de data inicial
 startDate.addEventListener("focusout", () => {
   const valueDate = startDate.value;
   const date = new Date(valueDate);
@@ -131,7 +131,7 @@ startDate.addEventListener("focusout", () => {
   endDate.min = startDate.value;
 });
 
-// Evento no campo de data final
+// Evento ao perder o foco do campo de data final
 endDate.addEventListener("focusout", () => {
   if (endDate.value < startDate.value) {
     endDate.value = startDate.value;
@@ -144,6 +144,7 @@ startTime.setAttribute("readOnly", true);
 endTime.setAttribute("readOnly", true);
 let checkStartTime = [startDate, tempTask];
 
+// Habilita campo de hora quando necessário
 checkStartTime.forEach((element) => {
   element.addEventListener("focusout", () => {
     if (startDate.value !== "" && tempTask.value !== "") {
@@ -152,31 +153,8 @@ checkStartTime.forEach((element) => {
   });
 });
 
-startTime.addEventListener("focus", () => {
-  console.log("vamoooo");
-});
-
-// Eventos de hora
-startTime.addEventListener("focusout", () => {
-  if (startDate.value === todayDate && startTime.value < hour) {
-    startTime.value = hour;
-  }
-  if (startTime.value !== "" && tempTask.value !== "") {
-    endTime.removeAttribute("disabled");
-  }
-});
-
-endTime.addEventListener("focusout", () => {
-  if (
-    ["Recorrente", "Unitário", "Alternado"].includes(tempTask.value) ||
-    (tempTask.value === "Alternado" && startTime.value >= endDate.value)
-  ) {
-    endTime.value = "";
-  }
-});
-
 // ========================
-// Task Creation
+// Criação de Tarefas
 // ========================
 
 createTask.addEventListener("click", () => {

@@ -177,7 +177,7 @@ td {
 
 #entrada {
     width: 100%;
-    height: 390px;
+    height: 75%;
     margin-top: 10px;
     display: flex;
     align-content: space-evenly;
@@ -188,7 +188,7 @@ td {
 
 .componentes {
     font-family: 'Itim', sans-serif;
-    width: 180px;
+    width: 100%;
     padding: 8px;
     font-size: 14px;
     border-radius: 8px;
@@ -205,18 +205,24 @@ td {
 }
 
 #closed {
-    width: 100%;
+    width: 90%;
     display: flex;
     gap: 5px;
-    justify-content: space-around;
-    align-items: start;
+    justify-content: center;
+    align-items: center;
 }
 
 #closedModal {
     font-size: 20px;
 }
 
-label {
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.campo label {
     display: flex;
     justify-content: start;
     align-items: center;
@@ -241,7 +247,7 @@ input[type="checkbox"]:checked {
 
 #criar {
     margin-top: 10px;
-    width: 100px;
+    width: 30%;
     padding: 8px;
     font-size: 14px;
     border-radius: 8px;
@@ -264,6 +270,7 @@ input[type="checkbox"]:checked {
 @media (max-width: 768px) {
     body {
         height: 88vh;
+
     }
 
     #to-do {
@@ -271,16 +278,53 @@ input[type="checkbox"]:checked {
         height: 450px;
 
     }
-    .dias{
+
+    .dias {
         height: 35px;
         font-size: 11px;
     }
-    .tarefas{
+
+    .tarefas {
         font-size: 20px;
     }
-    button{
+
+    button {
         font-size: 35px;
     }
+
+    .modal {
+        width: 360px;
+        height: 350px;
+        padding: 5px;
+
+    }
+
+    #entradas {
+        width: 100%;
+        align-items: center;
+
+
+
+    }
+
+    .componentes {
+        font-size: 12px;
+        width: 90%;
+        height: 25px;
+    }
+
+    #entrada select {
+        height: 30px;
+    }
+
+    #importancia {
+        height: 10px;
+    }
+
+    #descricao {
+        height: 50px;
+    }
+
 }
 
 @media(min-width: 768px) and (max-width: 1024px) {
@@ -293,17 +337,52 @@ input[type="checkbox"]:checked {
         height: 500px;
 
     }
-    .dias{
+
+    .dias {
         height: 35px;
         font-size: 11px;
     }
-    .tarefas{
+
+    .tarefas {
         font-size: 20px;
     }
-    button{
+
+    button {
         font-size: 35px;
     }
- 
+
+    .modal {
+        width: 400px;
+        height: 400px;
+
+    }
+
+    #entradas {
+        width: 100%;
+        align-items: center;
+
+
+
+    }
+
+    .componentes {
+        font-size: 12px;
+        width: 90%;
+        height: 25px;
+    }
+
+    #entrada select {
+        height: 30px;
+    }
+
+    #importancia {
+        height: 10px;
+    }
+
+    #descricao {
+        height: 50px;
+    }
+
 }
 
 /* Para tablets em paisagem (768px a 1024px) */
@@ -311,6 +390,15 @@ input[type="checkbox"]:checked {
     body {
         height: 99vh;
     }
+
+    .modal {
+        width: 450px;
+        height: 450px;
+
+    }
+
+
+
 
     #to-do {
         width: 800px;

@@ -56,62 +56,85 @@
               </button>
             </div>
 
-            <div id="entrada">
+            <section id="entrada">
               <!-- Timestamps -->
-              <label for="tipoTemporal">Tarefa </label>
-              <select id="tipoTemporal" class="componentes">
-                <option>Recorrente</option>
-                <option>Contínuo</option>
-                <option>Alternado</option>
-                <option>Unitário</option>
-              </select>
+              <div class="campo">
+                <label for="tipoTemporal">Tarefa</label>
+                <select id="tipoTemporal" class="componentes">
+                  <option>Recorrente</option>
+                  <option>Contínuo</option>
+                  <option>Alternado</option>
+                  <option>Unitário</option>
+                </select>
+              </div>
 
-              <label for="dataComeco">Data Inicial</label>
-              <input id="dataComeco" type="date" class="componentes" />
+              <div class="campo">
+                <label for="dataComeco">Data Inicial</label>
+                <input id="dataComeco" type="date" class="componentes" />
+              </div>
 
-              <label for="dataFinal">Data Final</label>
-              <input id="dataFinal" class="componentes" type="date" />
+              <div class="campo">
+                <label for="dataFinal">Data Final</label>
+                <input id="dataFinal" class="componentes" type="date" />
+              </div>
 
-              <label for="semanaDia">Dia de Início</label>
-              <input type="text" id="semanaDia" disabled class="componentes" />
+              <div class="campo">
+                <label for="semanaDia">Dia de Início</label>
+                <input
+                  type="text"
+                  id="semanaDia"
+                  disabled
+                  class="componentes"
+                />
+              </div>
 
-              <label for="horarioInicial">Horário Inicial</label>
-              <input id="horarioInicial" type="time" class="componentes" />
+              <div class="campo">
+                <label for="horarioInicial">Horário Inicial</label>
+                <input id="horarioInicial" type="time" class="componentes" />
+              </div>
 
-              <label for="horarioFinal">Horário Final</label>
-              <input
-                id="horarioFinal"
-                type="time"
-                class="componentes"
-                disabled
-              />
+              <div class="campo">
+                <label for="horarioFinal">Horário Final</label>
+                <input
+                  id="horarioFinal"
+                  type="time"
+                  class="componentes"
+                  disabled
+                />
+              </div>
 
               <!-- Task Settings -->
+              <div class="campo">
+                <label for="tipoTarefa">Tipo de Tarefa</label>
+                <select id="tipoTarefa" class="componentes">
+                  <option value="Esporte">Esporte</option>
+                  <option value="Estudo">Estudo</option>
+                  <option value="Limpeza">Limpeza</option>
+                  <option value="Serviço">Serviço</option>
+                  <option value="Cuidados">Cuidados</option>
+                  <option value="Eventos">Eventos</option>
+                </select>
+              </div>
 
-              <label for="tipoTarefa">Tipo de Tarefa</label>
-              <select id="tipoTarefa" class="componentes">
-                <option value="Esporte">Esporte</option>
-                <option value="Estudo">Estudo</option>
-                <option value="Limpeza">Limpeza</option>
-                <option value="Serviço">Serviço</option>
-                <option value="Cuidados">Cuidados</option>
-                <option value="Eventos">Eventos</option>
-              </select>
+              <div class="campo">
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" class="componentes"></textarea>
+              </div>
 
-              <label for="descricao">Descrição</label>
-              <textarea id="descricao" class="componentes"></textarea>
+              <!-- Importance -->
+              <div class="campo">
+                <label for="importancia">Importância</label>
+                <input
+                  id="importancia"
+                  type="range"
+                  class="componentes range"
+                  value="0"
+                  max="10"
+                  min="0"
+                />
+              </div>
+            </section>
 
-              <!-- Importance and Description -->
-              <label for="importancia">Importância</label>
-              <input
-                id="importancia"
-                type="range"
-                class="componentes range"
-                value="0"
-                max="10"
-                min="0"
-              />
-            </div>
             <button id="criar">Criar Tarefa</button>
           </div>
         </main>

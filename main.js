@@ -5,8 +5,11 @@ const { app, BrowserWindow } = require("electron");
 const createWindow = () => {
   // Cria uma nova instância da janela com configurações específicas
   const win = new BrowserWindow({
-    width: 800, // Largura da janela
-    height: 600, // Altura da janela
+    width: 1000, // Largura da janela
+    minWidth: 700,
+    height: 800, // Altura da janela
+    minHeight: 600,
+    
   });
 
   // Carrega o arquivo HTML que será exibido na janela
