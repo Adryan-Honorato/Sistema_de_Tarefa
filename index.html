@@ -5,41 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To Do List</title>
     <link rel="stylesheet" href="index.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Itim"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="src/fontawesome-free-6.7.2-web/css/all.min.css"
-    />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet" />
+    <link rel="stylesheet" href="src/fontawesome-free-6.7.2-web/css/all.min.css" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
   </head>
 
   <body>
     <div id="container">
       <div id="to-do">
-        <nav>
-          <section class="dias">Segunda-feira</section>
-          <section class="dias">Terça-feira</section>
-          <section class="dias">Quarta-feira</section>
-          <section class="dias">Quinta-feira</section>
-          <section class="dias">Sexta-feira</section>
-          <section class="dias">Sábado</section>
-          <section class="dias">Domingo</section>
-        </nav>
-
         <main class="tarefas">
           <p>NO MOMENTO NÃO TEMOS TAREFAS NOVAS</p>
+
           <table class="hidden">
             <thead>
               <tr>
-                <th>Descrição</th>
+                <th>Frequência</th>
                 <th>Começo</th>
                 <th>Fim</th>
+                <th>Horário</th>
                 <th>Importância</th>
                 <th>Concluído</th>
                 <th>Horário de Conclusão</th>
@@ -48,6 +31,7 @@
             <tbody></tbody>
           </table>
 
+          <!-- Modal de tarefa -->
           <div class="hidden modal" role="dialog" aria-labelledby="modalTitle">
             <div id="closed">
               <h1 id="modalTitle">ADICIONE UMA TAREFA</h1>
@@ -57,81 +41,62 @@
             </div>
 
             <section id="entrada">
-              <!-- Timestamps -->
               <div class="campo">
-                <label for="tipoTemporal">Tarefa</label>
+                <label for="tipoTemporal">Frequência da Tarefa</label>
                 <select id="tipoTemporal" class="componentes">
-                  <option>Recorrente</option>
-                  <option>Contínuo</option>
-                  <option>Alternado</option>
-                  <option>Unitário</option>
+                  <option value="todo_dia">Todo dia</option>
+                  <option value="dias_uteis">Dias úteis</option>
+                  <option value="contínuo">Sempre</option>
+                  <option value="alternado">Um dia sim, outro não</option>
+                  <option value="unitario">Apenas uma vez</option>
                 </select>
               </div>
 
               <div class="campo">
-                <label for="dataComeco">Data Inicial</label>
+                <label for="dataComeco">Começa em</label>
                 <input id="dataComeco" type="date" class="componentes" />
               </div>
 
               <div class="campo">
-                <label for="dataFinal">Data Final</label>
-                <input id="dataFinal" class="componentes" type="date" />
+                <label for="dataFinal">Termina em</label>
+                <input id="dataFinal" type="date" class="componentes" />
               </div>
 
               <div class="campo">
-                <label for="semanaDia">Dia de Início</label>
-                <input
-                  type="text"
-                  id="semanaDia"
-                  disabled
-                  class="componentes"
-                />
+                <label for="semanaDia">Dia da Semana</label>
+                <input type="text" id="semanaDia" class="componentes" disabled />
               </div>
 
               <div class="campo">
-                <label for="horarioInicial">Horário Inicial</label>
+                <label for="horarioInicial">Começa às</label>
                 <input id="horarioInicial" type="time" class="componentes" />
               </div>
 
               <div class="campo">
-                <label for="horarioFinal">Horário Final</label>
-                <input
-                  id="horarioFinal"
-                  type="time"
-                  class="componentes"
-                  disabled
-                />
+                <label for="horarioFinal">Termina às</label>
+                <input id="horarioFinal" type="time" class="componentes" />
               </div>
 
-              <!-- Task Settings -->
               <div class="campo">
-                <label for="tipoTarefa">Tipo de Tarefa</label>
+                <label for="tipoTarefa">Categoria</label>
                 <select id="tipoTarefa" class="componentes">
-                  <option value="Esporte">Esporte</option>
-                  <option value="Estudo">Estudo</option>
+                  <option value="Esporte">Atividade física</option>
+                  <option value="Estudo">Estudos</option>
                   <option value="Limpeza">Limpeza</option>
-                  <option value="Serviço">Serviço</option>
-                  <option value="Cuidados">Cuidados</option>
-                  <option value="Eventos">Eventos</option>
+                  <option value="Serviço">Trabalho</option>
+                  <option value="Cuidados">Cuidados pessoais</option>
+                  <option value="Eventos">Compromissos</option>
                 </select>
               </div>
 
               <div class="campo">
-                <label for="descricao">Descrição</label>
+                <label for="descricao">O que você precisa fazer?</label>
                 <textarea id="descricao" class="componentes"></textarea>
               </div>
 
-              <!-- Importance -->
               <div class="campo">
                 <label for="importancia">Importância</label>
-                <input
-                  id="importancia"
-                  type="range"
-                  class="componentes range"
-                  value="0"
-                  max="10"
-                  min="0"
-                />
+                <input id="importancia" type="range" class="componentes range" value="0" min="0" max="10" />
               </div>
             </section>
 
@@ -140,6 +105,9 @@
         </main>
 
         <div id="botoes">
+           <button id="filtro" aria-label="filtrar tarefa">
+           <i class="fa-solid fa-filter"></i>
+          </button>
           <button id="openModal" aria-label="Adicionar tarefa">
             <i class="fa-solid fa-circle-plus"></i>
           </button>
@@ -151,19 +119,19 @@
             <button id="playMusic" value="1" aria-label="Tocar música">
               <i class="fa-solid fa-circle-play iconPlay"></i>
             </button>
-            <input
-              type="range"
-              id="volume"
-              class="hidden range"
-              max="10"
-              min="0"
-              value="2"
-              aria-label="Controle de volume"
-            />
+            <input type="range" id="volume" class="hidden range" max="10" min="0" value="2" />
             <audio src="src/Audios/music6.mp3"></audio>
           </div>
         </div>
       </div>
+    </div>
+
+    <div id="blur"></div>
+
+    <div id="divAlert">
+      <h3>ALERTA</h3>
+      <span></span>
+      <button>OK</button>
     </div>
 
     <script src="index.js"></script>
