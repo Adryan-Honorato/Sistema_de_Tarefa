@@ -52,7 +52,7 @@ volumeSlider.addEventListener("input", () => {
 // ========================
 // MODAL
 // ========================
-const modal = document.querySelector(".modal");
+const modal = document.getElementById("modal");
 const blur = document.getElementById("blur");
 const openModal = document.getElementById("openModal");
 const closeModal = document.getElementById("closedModal");
@@ -60,21 +60,25 @@ const infoText = document.querySelector("p");
 
 
 
+
 openModal.addEventListener("click", () => {
   modal.style.display = "flex";
   blur.style.display = "block";
-  infoText.classList.add("hidden");
 });
 
 closeModal.addEventListener("click", () => {
-  components.forEach(c => {
+closeModalFunc ()
+});
+
+
+function closeModalFunc () {
+    components.forEach(c => {
     c.style.border = "none";
     c.value = "";
   });
   modal.style.display = "none";
   blur.style.display = "none";
-  infoText.classList.remove("hidden");
-});
+}
 
 modal.addEventListener("focusout", (e) => {
   if (e.target.classList.contains("componentes")) {
@@ -89,7 +93,7 @@ modal.addEventListener("focusout", (e) => {
 // ========================
 const components = document.querySelectorAll(".componentes");
 const inputLabels = document.querySelectorAll("label");
-const createTask = document.getElementById("criar");
+const createButton = document.getElementById("criar");
 const tempTask = document.getElementById("tipoTemporal");
 const typeTask = document.getElementById("tipoTarefa");
 const description = document.getElementById("descricao");
@@ -114,9 +118,11 @@ typeTask.value = "";
 // CRIAÇÃO DE TAREFA
 // ========================
 let numberTask = 0;
+const tableTask = document.getElementById("tableTask");
+
 const task = {};
 
-createTask.addEventListener("click", () => {
+createButton.addEventListener("click", () => {
   let filled = 0;
   let missing = "";
 
@@ -143,10 +149,44 @@ createTask.addEventListener("click", () => {
       descricao: description.value,
       importancia: importance.value,
     };
+
+    addTaskToTable(numberTask);
+    infoText.classList.add('hidden')
     numberTask++;
-    console.log(task);
   }
 });
+
+const taskList = document.getElementById("taskList");
+
+function addTaskToTable(taskIndex) {
+  const currentTask = task[`task${taskIndex}`];
+  const tr = document.createElement('tr');
+
+  const valores = [
+    currentTask.tipoTemporal,
+    currentTask.comeco,
+    currentTask.fim,
+    currentTask.horario,
+    currentTask.importancia,
+    currentTask.dia,
+    currentTask.tipoTarefa,
+    currentTask.descricao,
+  ];
+
+
+for(let i = 0; i < valores.length; i++) {
+  const td = document.createElement('td');
+ td.textContent = valores[i].toUpperCase();
+  tr.appendChild(td)
+}
+
+taskList.appendChild(tr);
+  closeModalFunc()
+  infoText.style.display = "none"
+  tableTask.style.display = "block";
+}
+
+
 
 // ========================
 // FUNÇÕES DE VALIDAÇÃO

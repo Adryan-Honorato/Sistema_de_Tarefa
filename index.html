@@ -14,9 +14,9 @@
     <div id="container">
       <div id="to-do">
         <main class="tarefas">
-          <p>NO MOMENTO NÃO TEMOS TAREFAS NOVAS</p>
+          <!-- <p>NO MOMENTO NÃO TEMOS TAREFAS NOVAS</p> -->
 
-          <table class="hidden">
+          <table id="tableTask">
             <thead>
               <tr>
                 <th>Frequência</th>
@@ -24,15 +24,18 @@
                 <th>Fim</th>
                 <th>Horário</th>
                 <th>Importância</th>
+                <th>Dia</th>
+                <th>Tipo</th>
+                <th>Descrição</th>
                 <th>Concluído</th>
-                <th>Horário de Conclusão</th>
+                <th>Conclusão</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody id="taskList"></tbody>
           </table>
 
           <!-- Modal de tarefa -->
-          <div class="hidden modal" role="dialog" aria-labelledby="modalTitle">
+          <div id="modal" role="dialog" aria-labelledby="modalTitle">
             <div id="closed">
               <h1 id="modalTitle">ADICIONE UMA TAREFA</h1>
               <button id="closedModal" aria-label="Fechar modal">
@@ -44,8 +47,8 @@
               <div class="campo">
                 <label for="tipoTemporal">Frequência da Tarefa</label>
                 <select id="tipoTemporal" class="componentes">
-                  <option value="todo_dia">Todo dia</option>
-                  <option value="dias_uteis">Dias úteis</option>
+                  <option value="todo dia">Todo dia</option>
+                  <option value="dias uteis">Dias úteis</option>
                   <option value="contínuo">Sempre</option>
                   <option value="alternado">Um dia sim, outro não</option>
                   <option value="unitario">Apenas uma vez</option>
