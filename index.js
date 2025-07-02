@@ -58,21 +58,17 @@ const openModal = document.getElementById("openModal");
 const closeModal = document.getElementById("closedModal");
 const infoText = document.querySelector("p");
 
-
-
-
 openModal.addEventListener("click", () => {
   modal.style.display = "flex";
   blur.style.display = "block";
 });
 
 closeModal.addEventListener("click", () => {
-closeModalFunc ()
+  closeModalFunc();
 });
 
-
-function closeModalFunc () {
-    components.forEach(c => {
+function closeModalFunc() {
+  components.forEach(c => {
     c.style.border = "none";
     c.value = "";
   });
@@ -94,6 +90,7 @@ modal.addEventListener("focusout", (e) => {
 const components = document.querySelectorAll(".componentes");
 const inputLabels = document.querySelectorAll("label");
 const createButton = document.getElementById("criar");
+
 const tempTask = document.getElementById("tipoTemporal");
 const typeTask = document.getElementById("tipoTarefa");
 const description = document.getElementById("descricao");
@@ -119,7 +116,7 @@ typeTask.value = "";
 // ========================
 let numberTask = 0;
 const tableTask = document.getElementById("tableTask");
-
+const taskList = document.getElementById("taskList");
 const task = {};
 
 createButton.addEventListener("click", () => {
@@ -151,12 +148,11 @@ createButton.addEventListener("click", () => {
     };
 
     addTaskToTable(numberTask);
-    infoText.classList.add('hidden')
+    infoText.classList.add('hidden');
     numberTask++;
   }
 });
 
-const taskList = document.getElementById("taskList");
 
 function addTaskToTable(taskIndex) {
   const currentTask = task[`task${taskIndex}`];
@@ -173,17 +169,31 @@ function addTaskToTable(taskIndex) {
     currentTask.descricao,
   ];
 
+  for (let i = 0; i < valores.length; i++) {
+    const td = document.createElement('td');
+    td.textContent = valores[i].toUpperCase();
+    tr.appendChild(td);
+  }
 
-for(let i = 0; i < valores.length; i++) {
-  const td = document.createElement('td');
- td.textContent = valores[i].toUpperCase();
-  tr.appendChild(td)
-}
+  const tdCheck = document.createElement('td');
+  const checkInput = document.createElement('input');
+  checkInput.type = "checkbox";
+  checkInput.classList.add('concluded');
 
-taskList.appendChild(tr);
-  closeModalFunc()
-  infoText.style.display = "none"
-  tableTask.style.display = "block";
+  tdCheck.appendChild(checkInput);
+  tr.appendChild(tdCheck);
+  taskList.appendChild(tr);
+
+  closeModalFunc();
+  infoText.style.display = "none";
+  tableTask.style.display = "table";
+  let checkConcluded = document.querySelectorAll(".concluded");
+
+checkConcluded.forEach((element) =>{
+  element.addEventListener("change", () =>{
+  
+  })
+})
 }
 
 

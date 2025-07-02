@@ -23,8 +23,9 @@ body {
 }
 
 #to-do {
-  width: 1000px;
+  width: 1500px;
   height: 800px;
+  min-width: 600px;
 }
 
 .tarefas {
@@ -100,7 +101,7 @@ button:hover {
 
 table {
   width: 100%;
-  border: 1px solid #1C314D;
+  display: none;
   font-size: 22px;
   text-align: center;
   color: #F5F5F5;
@@ -114,14 +115,24 @@ thead {
 
 th,
 td {
+  width: 60px;
   padding: 12px 8px;
   text-align: center;
+   border-left: 1px solid #1C314D;
 }
 
 th {
   font-size: 15px;
   font-weight: bold;
-  border-left: 1px solid #1C314D;
+
+}
+
+th:nth-child(1) {
+  border-radius: 10px 0 0 0;
+}
+
+th:last-child{
+  border-radius: 0  10px 0 0 ;
 }
 
 td {
@@ -297,46 +308,114 @@ input[type="checkbox"]:checked {
 
 /* Até 768px - celular */
 @media (max-width: 768px) {
+  body {
+    height: auto;
+    min-height: 100vh;
+    padding: 10px 0;
+    font-size: 14px;
+    overflow-x: hidden;
+  }
+
+  #container {
+    padding: 5px;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
   #to-do {
     width: 95%;
     height: 480px;
+    min-width: unset;
+    padding: 0;
   }
 
   .tarefas {
-    font-size: 18px;
+    font-size: 16px;
+    border-radius: 5px 5px 0 0;
+    padding: 5px;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+
+  thead {
+    font-size: 11px;
+  }
+
+  th,
+  td {
+    padding: 6px 4px;
+    font-size: 5px;
+    overflow: hidden;
+  }
+
+
+  #botoes {
+    padding: 5px;
+    gap: 5px;
+    justify-content: space-around;
+    flex-wrap: wrap;
   }
 
   button {
-    font-size: 32px;
+    font-size: 24px;
+    padding: 5px;
+  }
+
+  #volume {
+    display: none;
   }
 
   #modal {
-    width: 90%;
+    width: 95%;
+    max-width: 350px;
     height: auto;
-    padding: 15px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 10px;
   }
 
   #entrada {
-    align-items: center;
+    gap: 8px;
   }
 
   .componentes {
-    font-size: 12px;
-    width: 90%;
-    height: 25px;
+    font-size: 14px;
+    padding: 6px;
+    width: 95%;
   }
 
-  #entrada select,
-  #descricao {
-    height: 40px;
+  #divAlert {
+    width: 90%;
+    max-width: 280px;
+    font-size: 14px;
+  }
+
+  #divAlert button {
+    width: 40%;
+    font-size: 14px;
   }
 }
+
+
 
 /* De 768px até 1024px - tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
   #to-do {
     width: 90%;
     height: 550px;
+  }
+
+  table {
+    width: 95%;
+  }
+
+  th {
+    font-size: 14px;
+  }
+
+  td {
+    font-size: 14px;
   }
 
   .tarefas {
@@ -361,11 +440,17 @@ input[type="checkbox"]:checked {
 /* De 1024px até 1800px */
 @media (min-width: 1024px) and (max-width: 1800px) {
   #to-do {
-    width: 800px;
+    width: 80%;
     height: 600px;
   }
 
+  table {
+    width: 100%;
+  }
+
+
   #modal {
+    padding: 10px;
     width: 450px;
     height: 450px;
   }
