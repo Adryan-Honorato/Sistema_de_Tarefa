@@ -153,6 +153,13 @@ createButton.addEventListener("click", () => {
   }
 });
 
+function formatarDataBR(data) {
+  const dia = String(data.getDate()).padStart(2, '0');
+  const mes = String(data.getMonth() + 1).padStart(2, '0');
+  const ano = data.getFullYear();
+  return `${dia}/${mes}/${ano}`;
+}
+
 
 function addTaskToTable(taskIndex) {
   const currentTask = task[`task${taskIndex}`];
@@ -160,8 +167,8 @@ function addTaskToTable(taskIndex) {
 
   const valores = [
     currentTask.tipoTemporal,
-    currentTask.comeco,
-    currentTask.fim,
+    formatarDataBR(new Date(currentTask.comeco)),
+    formatarDataBR(new Date(currentTask.fim)),
     currentTask.horario,
     currentTask.importancia,
     currentTask.dia,
@@ -177,9 +184,7 @@ function addTaskToTable(taskIndex) {
 
   const tdCheck = document.createElement('td');
   const checkInput = document.createElement('input');
-  checkInput.type = "checkbox";
-  checkInput.classList.add('concluded');
-
+  checkInput.type = "radio";
   tdCheck.appendChild(checkInput);
   tr.appendChild(tdCheck);
   taskList.appendChild(tr);
@@ -187,13 +192,17 @@ function addTaskToTable(taskIndex) {
   closeModalFunc();
   infoText.style.display = "none";
   tableTask.style.display = "table";
-  let checkConcluded = document.querySelectorAll(".concluded");
 
-checkConcluded.forEach((element) =>{
-  element.addEventListener("change", () =>{
   
+  checkInput.addEventListener("change", () => {
+    const trCheck = checkInput.parentNode.parentNode;
+    console.log(trCheck.children.length)
+    if (trCheck.children.length < 10) {
+      const tdDate = document.createElement('td')
+      tdDate.textContent = formatarDataBR(today)
+      trCheck.appendChild(tdDate)
+    }
   })
-})
 }
 
 
@@ -238,7 +247,8 @@ function corrigirHorarioInvalido() {
 // ========================
 const divAlert = document.getElementById("divAlert");
 const textAlert = divAlert.querySelector("span");
-const btnAlert = divAlert.querySelector("button");
+const btnAlert = document.getElementById('buttonAlert');
+
 
 function callAlert(msg) {
   modal.style.display = "none";
@@ -246,8 +256,10 @@ function callAlert(msg) {
   divAlert.style.display = "flex";
 }
 
-btnAlert.addEventListener("click", () => {
-  modal.style.display = "flex";
+btnAlert.addEventListener("click", (e) => {
+if(e.target.textContent === "OK"){
+   modal.style.display = "flex";
   divAlert.style.display = "none";
   textAlert.innerHTML = "";
+}
 });

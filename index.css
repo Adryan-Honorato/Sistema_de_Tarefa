@@ -161,6 +161,7 @@ td {
   border-radius: 12px;
   background: #223A5F;
   color: #F5F5F5;
+  padding: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
 
@@ -241,6 +242,42 @@ input[type="checkbox"]:checked {
   background: #FFD700;
 }
 
+
+
+input[type="radio"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #F5F5F5;
+  border-radius: 50%;
+  background-color: #223A5F;
+  cursor: pointer;
+  position: relative;
+  transition: border 0.2s ease-in-out, background 0.2s ease-in-out;
+}
+
+input[type="radio"]:checked {
+  background-color: #FFD700;
+  border-color: #FFD700;
+}
+
+input[type="radio"]::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #182635;
+  transform: scale(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
 #criar {
   margin-top: 10px;
   width: 30%;
@@ -262,6 +299,7 @@ input[type="checkbox"]:checked {
   display: none;
   flex-direction: column;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 5px;
   align-items: center;
   position: fixed;
@@ -282,7 +320,7 @@ input[type="checkbox"]:checked {
   text-align: center;
 }
 
-#divAlert button {
+#buttonAlert button {
   width: 20%;
   color: #223A5F;
   background-color: #F5F5F5;
@@ -290,6 +328,10 @@ input[type="checkbox"]:checked {
   font-weight: bold;
   padding: 2px;
   border-radius: 10px;
+}
+
+#buttonAlert{
+  width: 100%;
 }
 
 #blur {
